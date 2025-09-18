@@ -1,9 +1,15 @@
 const db = require("../db/queries");
 
 async function getUsernames(req, res) {
-  const usernames = await db.getAllUsernames();
-  console.log("Usernames:", usernames);
-  res.send("usernames:" + usernames.map((user) => user.username).join(", "));
+  const {search} = req.query;
+  let usernames ;
+  
+  if(search){
+    usernames =  await db.getUser(search);
+  }else{
+    usernames = await db.getAllUsernames();
+  }
+  res.render('userList',{usernames,search})
 }
 
 async function showUser(req, res) {
@@ -16,8 +22,16 @@ async function createUser(req, res) {
   res.redirect("/");
 }
 
+async function deleteUsernames(req,res) {
+
+  await db.deleteAllUser();
+  res.redirect('/')
+  
+}
+
 module.exports = {
   getUsernames,
   showUser,
   createUser,
+  deleteUsernames
 };

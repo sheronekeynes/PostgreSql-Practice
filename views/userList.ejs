@@ -6,7 +6,17 @@
     <title>Document</title>
   </head>
   <body>
-    
-    <h1>Coming Soon :\</h1>
+    <% console.log(locals)%>
+    <form method="GET" action="/">
+      <input
+        type="search"
+        name="search"
+        placeholder="search user..."
+        value="<%= search || '' %>"
+      />
+    </form>
+    <% usernames.map(user=>{%>
+    <h2><%= user.username %></h2>
+    <% }) %>
   </body>
 </html>

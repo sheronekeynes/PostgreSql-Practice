@@ -3,6 +3,8 @@ const app = express();
 
 const path = require("path");
 
+require('dotenv').config();
+
 app.use(express.json());
 
 app.set("views", path.join(__dirname, "views"));
