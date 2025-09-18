@@ -3,7 +3,7 @@ const app = express();
 
 const path = require("path");
 
-require('dotenv').config();
+require("dotenv").config();
 
 app.use(express.json());
 
@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 const port = 3000;
 
 const userRouter = require("./routes/userRouter");
-const showUsersRouter = require('./routes/showUsersRouter')
+const showUsersRouter = require("./routes/showUsersRouter");
 // show all user names
-app.use('/',showUsersRouter);
+app.use("/", showUsersRouter);
 
 app.use("/new", userRouter);
 
